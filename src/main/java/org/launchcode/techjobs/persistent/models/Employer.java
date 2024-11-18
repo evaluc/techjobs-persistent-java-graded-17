@@ -23,6 +23,7 @@ public class Employer extends AbstractEntity {
     @OneToMany(mappedBy = "employer")
     @JoinColumn(name = "employer_id")
     private final List<Job> jobs = new ArrayList<>();
+    //change from final to static, could remove?
 
     //no-arg constructor required for Entity
     public Employer() {}
