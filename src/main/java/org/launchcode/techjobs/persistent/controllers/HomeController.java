@@ -46,6 +46,9 @@ public class HomeController {
         model.addAttribute(new Job());
         model.addAttribute("employers", employerRepository.findAll());
         //Do I need to adjust this to employer non-plural?
+        //Add missing skills checkboxes?
+        model.addAttribute("skills", skillRepository.findAll());
+
         return "add";
     }
 
@@ -57,6 +60,8 @@ public class HomeController {
 	    model.addAttribute("title", "Add Job");
             return "add";
         }
+
+        //Maybe something is wrong here with the ordering of code
 
         Optional<Employer> sortedEmployers = employerRepository.findById(employerId);
 

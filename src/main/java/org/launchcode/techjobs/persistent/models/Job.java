@@ -3,6 +3,7 @@ package org.launchcode.techjobs.persistent.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,8 +13,8 @@ public class Job extends AbstractEntity {
     private Employer employer;
 
     @ManyToMany
-    private List<Skill> skills;
-//Does this need to be an ArrayList vs. List?
+    private List<Skill> skills = new ArrayList<>();
+//Changed to actually have checkbox list of skills?
 
     public Job() {
     }

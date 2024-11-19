@@ -40,6 +40,7 @@ public class SkillController {
         }
 
         skillRepository.save(newSkill);
+
         return "redirect:";
     }
 
