@@ -36,6 +36,7 @@ public class HomeController {
     public String index(Model model) {
 
         model.addAttribute("title", "MyJobs");
+        model.addAttribute("jobs", jobRepository.findAll());
 
         return "index";
     }
@@ -45,8 +46,6 @@ public class HomeController {
 	model.addAttribute("title", "Add Job");
         model.addAttribute(new Job());
         model.addAttribute("employers", employerRepository.findAll());
-        //Do I need to adjust this to employer non-plural?
-        //Add missing skills checkboxes?
         model.addAttribute("skills", skillRepository.findAll());
 
         return "add";
@@ -60,8 +59,6 @@ public class HomeController {
 	    model.addAttribute("title", "Add Job");
             return "add";
         }
-
-        //Maybe something is wrong here with the ordering of code
 
         Optional<Employer> sortedEmployers = employerRepository.findById(employerId);
 
@@ -81,6 +78,12 @@ public class HomeController {
 
     @GetMapping("view/{jobId}")
     public String displayViewJob(Model model, @PathVariable int jobId) {
+
+        Optional optJob = jobRepository.findById(jobId);
+        if (optJob.isPresent()) {
+            Job job = (Job) optJob.get();
+            model.addAttribute("job", job);
+        }
 
             return "view";
     }

@@ -23,7 +23,6 @@ public class Employer extends AbstractEntity {
     @OneToMany(mappedBy = "employer")
     @JoinColumn(name = "employer_id")
     private static List<Job> jobs = new ArrayList<>();
-    //was final instead of static
 
     //no-arg constructor required for Entity
     public Employer() {}

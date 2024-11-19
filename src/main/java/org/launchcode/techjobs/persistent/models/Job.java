@@ -14,7 +14,6 @@ public class Job extends AbstractEntity {
 
     @ManyToMany
     private List<Skill> skills = new ArrayList<>();
-//Changed to actually have checkbox list of skills?
 
     public Job() {
     }
